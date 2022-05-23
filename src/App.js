@@ -7,10 +7,14 @@ import { useEffect, useState } from "react";
 // Styles
 import "./App.css";
 
+// Links
+// npx json-server -p 4000 db/jobs_working.json
+// yt video https://www.youtube.com/watch?v=MY6ZZIn93V8
+
 function App() {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
-  // const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     getJobs();
@@ -22,16 +26,11 @@ function App() {
     setJobs(data);
   };
 
-  const updateSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
   /* SEARCH BUTTON and JOB LIST RESULTS
 1. fetch the list of jobs and store them in your initial list of jobs state
 2. create a new state variable for the search bar text
 3. then COMPUTE a filtered list of jobs, based on the search bar text: ie if search includes "nodejs" then only return jobs that have that word in the description
 4. the computed filtered list of jobs is what you pass to your JSX/HTML part for showing the jobs
-*/
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,31 +52,35 @@ function App() {
     }
     setSearch("");
   };
+*/
 
   return (
     <div className="App">
       <h1>Find the right job here</h1>
-      <form className="search-form" onSubmit={handleSubmit}>
+      <form className="search-form">
         <input
           className="search-bar"
           type="text"
+          placeholder="Search..."
           value={search}
-          onChange={updateSearch}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <button className="search-button" type="submit">
-          Search
+          🔎
         </button>
       </form>
       <div className="jobs">
-        {jobs.map((job) => (
-          <Job
-            key={job.id}
-            title={job.Title}
-            level={job.Level}
-            skills={job.Skill}
-            details={job.Detail}
-          />
-        ))}
+        {jobs
+          .filter((job) => job.Detail.toLowerCase().includes(query))
+          .map((job) => (
+            <Job
+              key={job.id}
+              title={job.Title}
+              level={job.Level}
+              skills={job.Skill}
+              details={job.Detail}
+            />
+          ))}
       </div>
     </div>
   );

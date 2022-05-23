@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// Components
+import Job from "./Job";
+
+// Hooks
+import { useEffect, useState } from "react";
+
+// Styles
+import "./App.css";
 
 function App() {
+  const [jobs, setJobs] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const updateSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Find the right job here</h1>
+      <form className="search-form">
+        <input
+          className="search-bar"
+          type="text"
+          value={search}
+          onChange={updateSearch}
+        />
+        <button className="search-button" type="submit">
+          Search
+        </button>
+      </form>
+      <div className="jobs">
+        <Job />
+      </div>
     </div>
   );
 }
 
 export default App;
+
+//Todo list

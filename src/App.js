@@ -33,25 +33,26 @@ function App() {
 4. the computed filtered list of jobs is what you pass to your JSX/HTML part for showing the jobs
 */
 
-  /* const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+    console.log("Submitting search:", value);
     if (
       name === "Nodejs" ||
-      name === "Phython" ||
+      name === "Phyton" ||
       name === "Web Design" ||
       name === "HTML" ||
       name === "Ruby" ||
       name === "Java" ||
       name === "Web Development"
     ) {
-      setSearch({ ...search, [name]: value });
+      console.log("Found target search, updating state!");
+      setSearch(value);
+    } else {
+      console.log("Not found target search term, resetting search to empty");
     }
     setSearch("");
-  }; 
-  
-  On line 58 you have the onSubmit={handleSubmit}
-  */
+  };
 
   return (
     <div className="App">

@@ -11,6 +11,16 @@ function App() {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    getJobs();
+  }, []);
+
+  const getJobs = async () => {
+    const response = await fetch("http://localhost:3000/jobs");
+    const data = await response.json();
+    setJobs(data);
+  };
+
   const updateSearch = (e) => {
     setSearch(e.target.value);
   };

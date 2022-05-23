@@ -1,10 +1,14 @@
 import React from "react";
+import style from "./job.css";
 
-const Job = () => {
+const Job = ({ title, skills, details }) => {
   return (
-    <div className="">
-      <h1></h1>
-      <ol></ol>
+    <div className={style.job}>
+      <h1>{title}</h1>
+      <ol>
+        <li>{skills}</li>
+        <li>{details}</li>
+      </ol>
     </div>
   );
 };

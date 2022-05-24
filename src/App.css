@@ -50,13 +50,13 @@
 .job {
   border-radius: 10px;
   margin: 20px;
-  padding: 30px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   background: white;
   align-items: center;
-  min-width: 40%;
+  width: 50%;
 }
 
 .skills-details {

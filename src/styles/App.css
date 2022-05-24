@@ -46,3 +46,28 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+/* CV SECTION */
+
+.form-stack > input {
+  width: 100%;
+}
+
+.cv-form {
+  max-width: 400px;
+}
+
+.cv-form h1 {
+  margin-bottom: 1rem;
+}
+
+.cv-form label {
+  font-weight: bold;
+}
+
+.cv-form .actions-section {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: right;
+  gap: 0.5rem;
+}

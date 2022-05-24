@@ -1,14 +1,19 @@
 import React from "react";
+import "../styles/job.css";
 
 const Job = ({ title, skills, details, link }) => {
   return (
     <div className="job">
-      <h2 className="title">{title}</h2> &nbsp;
+      <h2>{title}</h2> &nbsp;
       <ol className="skills-details">
         <li>{skills}</li> &nbsp;
-        <li>{details}</li> &nbsp;
         <li>
-          <a href="">{link}</a>
+          <strong>Details:</strong> {details}
+        </li>
+        &nbsp;
+        <li>
+          <strong>Website: </strong>
+          <a href="https://www.upwork.com/">{link}</a>
         </li>
       </ol>
     </div>

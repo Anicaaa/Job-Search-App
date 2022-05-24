@@ -8,56 +8,41 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 // Links
-// npx json-server -p 4000 db/jobs_working.json
+// npx json-server --watch db/jobs_working.json
 // yt video https://www.youtube.com/watch?v=MY6ZZIn93V8
+
+// Todo list
+// 1. Reset the search bar after clicking the sumit button - setSearch("");
+// 2. Type a key word which will automatically give you the result matching the characters without the need to click on the search button.
 
 function App() {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("");
 
   useEffect(() => {
     getJobs();
-  }, []);
+  }, [search]);
 
   const getJobs = async () => {
     const response = await fetch("http://localhost:3000/jobs");
+    console.log(response);
     const data = await response.json();
+    console.log(data);
     setJobs(data);
   };
 
-  /* SEARCH BUTTON and JOB LIST RESULTS
-1. fetch the list of jobs and store them in your initial list of jobs state
-2. create a new state variable for the search bar text
-3. then COMPUTE a filtered list of jobs, based on the search bar text: ie if search includes "nodejs" then only return jobs that have that word in the description
-4. the computed filtered list of jobs is what you pass to your JSX/HTML part for showing the jobs
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, value } = e.target;
-    console.log("Submitting search:", value);
-    if (
-      name === "Nodejs" ||
-      name === "Phyton" ||
-      name === "Web Design" ||
-      name === "HTML" ||
-      name === "Ruby" ||
-      name === "Java" ||
-      name === "Web Development"
-    ) {
-      console.log("Found target search, updating state!");
-      setSearch(value);
-    } else {
-      console.log("Not found target search term, resetting search to empty");
-    }
-    setSearch("");
+    const filter = jobs.filter((job) =>
+      job.Detail.toLowerCase().includes(search)
+    );
+    setJobs(filter);
   };
-*/
 
   return (
     <div className="App">
-      <h1>Find the right job here</h1>
-      <form className="search-form">
+      <h1 className="job-sentence">Find the right job today!</h1>
+      <form className="search-form" onSubmit={handleSubmit}>
         <input
           className="search-bar"
           type="text"
@@ -70,22 +55,18 @@ function App() {
         </button>
       </form>
       <div className="jobs">
-        {jobs
-          .filter((job) => job.Detail.toLowerCase().includes(query))
-          .map((job) => (
-            <Job
-              key={job.id}
-              title={job.Title}
-              level={job.Level}
-              skills={job.Skill}
-              details={job.Detail}
-            />
-          ))}
+        {jobs.map((job) => (
+          <Job
+            key={job.id}
+            title={job.Title}
+            link={job.JobPageLink}
+            skills={job.Skill}
+            details={job.Detail}
+          />
+        ))}
       </div>
     </div>
   );
 }
 
 export default App;
-
-//Todo list

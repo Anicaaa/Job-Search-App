@@ -1,13 +1,15 @@
 import React from "react";
-import style from "./job.css";
 
-const Job = ({ title, skills, details }) => {
+const Job = ({ title, skills, details, link }) => {
   return (
-    <div className={style.job}>
-      <h1 className="title">{title}</h1>
-      <ol>
-        <li>{skills}</li>
-        <li>{details}</li>
+    <div className="job">
+      <h2 className="title">{title}</h2> &nbsp;
+      <ol className="skills-details">
+        <li>{skills}</li> &nbsp;
+        <li>{details}</li> &nbsp;
+        <li>
+          <a href="">{link}</a>
+        </li>
       </ol>
     </div>
   );

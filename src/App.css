@@ -5,8 +5,13 @@
 }
 
 .App {
+  min-height: 100vh;
   text-align: center;
   background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+}
+
+.job-sentence {
+  padding-top: 40px;
 }
 
 .search-form {
@@ -40,4 +45,20 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.job {
+  border-radius: 10px;
+  margin: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: white;
+  align-items: center;
+  min-width: 40%;
+}
+
+.skills-details {
+list-style-type: none;
 }

@@ -1,23 +1,19 @@
 // Components
 import Navbar from "./components/Navbar";
 import Job from "./components/Job";
+import CV from "./components/CV";
 
 // Hooks
 import { useEffect, useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
 
 // Styles
 import "./styles/App.css";
+import "./styles/navbar.css";
 
 // Links
 // npx json-server --watch db/jobs_working.json
 // yt video https://www.youtube.com/watch?v=MY6ZZIn93V8
-
-// Todo list
-// 1. Reset the search bar after clicking the sumit button - setSearch("");
-// 2. Type a key word which will automatically give you the result matching the characters without the need to click on the search button.
-
-// 4. Click on CV which takes to a new page where the user can add name, surname, email and a cv.
-// 5. Attach button with magnifying glass with search input. NO GAP in between.
 
 function App() {
   const [active, setActive] = useState("nav-menu");
@@ -59,13 +55,33 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar
-        navToggle={navToggle}
-        icon={icon}
-        setIcon={setIcon}
-        active={active}
-        setActive={setActive}
-      />
+      <nav className="nav">
+        <a className="nav-link" href="#">
+          Search a Job
+        </a>
+        <ul className={active}>
+          <li className="nav-item">
+            <a className="nav-link" href="">
+              Home
+            </a>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/cv">
+              CV
+            </Link>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="">
+              Contact
+            </a>
+          </li>
+        </ul>
+        <div onClick={navToggle} className={icon}>
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
+      </nav>
       <h1 className="job-sentence">Find the right job today!</h1>
       <form className="search-form" onSubmit={handleSubmit}>
         <input
@@ -89,6 +105,9 @@ function App() {
             details={job.Detail}
           />
         ))}
+        <Routes>
+          <Route path="/cv" element={<CV />} />
+        </Routes>
       </div>
     </div>
   );

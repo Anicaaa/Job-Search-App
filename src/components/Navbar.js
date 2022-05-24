@@ -1,10 +1,10 @@
-import "../styles/navbar.css";
+/* import "../styles/navbar.css";
 
 function Navbar({ navToggle, active, icon }) {
   return (
     <nav className="nav">
       <a className="nav-link" href="#">
-        Work Work Work
+        Search a Job
       </a>
       <ul className={active}>
         <li className="nav-item">
@@ -32,4 +32,12 @@ function Navbar({ navToggle, active, icon }) {
   );
 }
 
-export default Navbar;
+export default Navbar; */
+
+/*   <Navbar
+        navToggle={navToggle}
+        icon={icon}
+        setIcon={setIcon}
+        active={active}
+        setActive={setActive}
+      /> */

@@ -1,6 +1,5 @@
 // Components
-import Navbar from "./components/Navbar";
-import Job from "./components/Job";
+import Home from "./components/Home";
 import CV from "./components/CV";
 
 // Hooks
@@ -39,9 +38,9 @@ function App() {
 
   const getJobs = async () => {
     const response = await fetch("http://localhost:3000/jobs");
-    console.log(response);
+    //console.log(response);
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     setJobs(data);
   };
 
@@ -61,9 +60,9 @@ function App() {
         </a>
         <ul className={active}>
           <li className="nav-item">
-            <a className="nav-link" href="">
+            <Link className="nav-link" to="/home">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/cv">
@@ -82,33 +81,20 @@ function App() {
           <div className="line3"></div>
         </div>
       </nav>
-      <h1 className="job-sentence">Find the right job today!</h1>
-      <form className="search-form" onSubmit={handleSubmit}>
-        <input
-          className="search-bar"
-          type="text"
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <Home
+              jobs={jobs}
+              search={search}
+              setSearch={setSearch}
+              handleSubmit={handleSubmit}
+            />
+          }
         />
-        <button className="search-button" type="submit">
-          🔎
-        </button>
-      </form>
-      <div className="jobs">
-        {jobs.map((job) => (
-          <Job
-            key={job.id}
-            title={job.Title}
-            link={job.JobPageLink}
-            skills={job.Skill}
-            details={job.Detail}
-          />
-        ))}
-        <Routes>
-          <Route path="/cv" element={<CV />} />
-        </Routes>
-      </div>
+        <Route path="/cv" element={<CV />} />
+      </Routes>
     </div>
   );
 }

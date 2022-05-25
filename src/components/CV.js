@@ -1,8 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
 function CV() {
-  let navigate = useNavigate();
-
   return (
     <form className="form-stack cv-form">
       <h2>Save your CV</h2>

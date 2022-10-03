@@ -1,3 +1,8 @@
+
+<img width="1263" alt="Job-Search-Image" src="https://user-images.githubusercontent.com/75957784/193560017-24aecb38-8d19-454f-b414-990560c69d34.png">
+
+This is a Job Search App that I created using React and I get the data from a local API.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -13,6 +18,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+### `npx json-server --watch db/jobs_working.json`
+
+Activates the local API jobs_working.json
 
 ### `npm test`
 

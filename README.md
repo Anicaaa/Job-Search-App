@@ -1,7 +1,6 @@
+This is a Job Search App that I created using React and I get the data from a local API.
 
 <img width="1263" alt="Job-Search-Image" src="https://user-images.githubusercontent.com/75957784/193560017-24aecb38-8d19-454f-b414-990560c69d34.png">
-
-This is a Job Search App that I created using React and I get the data from a local API.
 
 # Getting Started with Create React App
 
